@@ -2,7 +2,7 @@ require 'redmine'
 require File.dirname(__FILE__) + '/lib/SpentTimeRequired.rb'
 
 # require 'dispatcher'
-ActionDispatch::Callbacks.to_prepare :SpentTimeRequired do
+ActionDispatch::Callbacks.to_prepare do
      IssuesController.send(:include, SpentTimeRequired::Patches::IssuesControllerPatch)
 end
 
