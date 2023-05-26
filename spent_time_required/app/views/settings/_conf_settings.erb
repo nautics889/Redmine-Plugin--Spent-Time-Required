@@ -20,3 +20,21 @@
     <br/>
   <% end %>
 </p>
+<p>
+  <label>Trackers</label>
+  <% Tracker.all.each do |tracker| %>
+    <%= check_box_tag 'settings[list_tracker][' + tracker.id.to_s + ']', 1, @settings[:list_tracker][tracker.id.to_s] %>
+    <%= tracker %>
+    <input type="hidden" name="settings[list_tracker][0]" value="1" /> 
+    <br/>
+  <% end %>
+</p>
+<p>
+  <label>Projects</label>
+  <% Project.active.each do |project| %>
+    <%= check_box_tag 'settings[list_project][' + project.id.to_s + ']', 1, @settings.fetch("list_project", {}).fetch(project.id.to_s, false) %>
+    <%= project %>
+    <input type="hidden" name="settings[list_project][0]" value="1" /> 
+    <br/>
+  <% end %>
+</p>
